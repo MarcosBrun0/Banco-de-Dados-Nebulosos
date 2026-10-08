@@ -1,0 +1,17 @@
+services:
+  arangodb:
+    image: arangodb:3.12
+    container_name: arangodb-pesquisa
+    restart: unless-stopped
+    environment:
+      ARANGO_ROOT_PASSWORD: dijkstra
+    ports:
+      # Interface web e API HTTP em http://localhost:8529
+      - "127.0.0.1:8529:8529"
+    volumes:
+      - arangodb_data:/var/lib/arangodb3
+      - arangodb_apps:/var/lib/arangodb3-apps
+
+volumes:
+  arangodb_data:
+  arangodb_apps:
